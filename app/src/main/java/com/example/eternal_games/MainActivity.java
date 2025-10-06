@@ -1,35 +1,38 @@
 package com.example.eternal_games;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button; // 👈 Importar Button
+import android.widget.Toast; // 👈 Importar Toast (opcional, para feedback)
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList; // 👈 Importar ArrayList
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    // Vista de productos
+    private RecyclerView recyclerProductos;
+    // Botón Demo
+    private Button btnDemo;
+    //Lista de productos
+    private List<Producto> productos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        recyclerProductos = findViewById(R.id.recyclerProductos);
+        btnDemo = findViewById(R.id.btnDemo);
 
-        // Crear productos
+        // Configuramos el RecyclerView para mostrar lista
+        ProductoAdapter adapter = new ProductoAdapter(this, productos);
+        recyclerProductos.setLayoutManager(new LinearLayoutManager(this)); // O GridLayoutManager
+        recyclerProductos.setAdapter(adapter);
+
+        // Creamos los productos harcoded
         Producto p1 = new Producto();
         p1.id = 1;
         p1.title = "Zelda";
@@ -56,23 +59,21 @@ public class MainActivity extends AppCompatActivity {
         p2.category = "Accion";
         p2.img = R.drawable.zelda_2;
 
-        List<Producto> productos = Arrays.asList(p1, p2);
+        // Metemos los productos
+        List<Producto> productosDemo = Arrays.asList(p1, p2);
 
-        // Inflar productos en pantalla
-        LinearLayout contenedor = findViewById(R.id.contenedorProductos);
+        // Lógica del botón "Agregar Demo"
+        btnDemo.setOnClickListener(v -> {
+            // Limpiar la lista actual (opcional, si quieres que cada vez sea un set nuevo)
+            productos.clear();
 
-        for (Producto p : productos) {
-            View vistaProducto = LayoutInflater.from(this).inflate(R.layout.item_producto, contenedor, false);
+            // Añadir los productos demo a la lista de datos del RecyclerView
+            productos.addAll(productosDemo);
 
-            TextView titulo = vistaProducto.findViewById(R.id.txtTitulo);
-            TextView descripcion = vistaProducto.findViewById(R.id.txtDescripcion);
-            ImageView imagen = vistaProducto.findViewById(R.id.imgProducto);
+            // Notificar al adaptador que los datos han cambiado
+            adapter.notifyDataSetChanged();
 
-            titulo.setText(p.title);
-            descripcion.setText(p.description);
-            imagen.setImageResource(p.img);;
-
-            contenedor.addView(vistaProducto);
-        }
+            Toast.makeText(this, "Productos demo cargados.", Toast.LENGTH_SHORT).show();
+        });
     }
 }
