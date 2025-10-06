@@ -9,6 +9,7 @@
     android:background="@drawable/fondo"
     tools:context=".MainActivity">
 
+    <!-- Nav Bar Superior -->
     <include
         android:id="@+id/navbar_superior"
         layout="@layout/navbar"
@@ -16,16 +17,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerProductos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/navbar_inferior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+    <!-- Nav Bar Inferior rojo -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navbar_inferior"
         android:layout_width="0dp"
@@ -36,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/navbar_superior"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
-
+        <!-- Booton de demo -->
         <Button
             android:id="@+id/btnDemo"
             android:layout_width="wrap_content"
@@ -44,11 +36,21 @@
             android:text="Agregar Demos"
             android:textSize="12sp"
             android:padding="4dp"
-            android:backgroundTint="@color/blackdark"
+            android:backgroundTint="@color/blackdarkbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Grid de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerProductos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/navbar_inferior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
