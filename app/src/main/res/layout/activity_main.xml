@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/navbar_superior"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
+
         <!-- Booton de demo -->
         <Button
             android:id="@+id/btnDemo"
@@ -37,6 +38,43 @@
             android:textSize="12sp"
             android:padding="4dp"
             android:backgroundTint="@color/blackdarkbutton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Botón Inicio (solo ícono) -->
+        <ImageButton
+            android:id="@+id/btnInicio"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_home"
+            android:contentDescription="Inicio"
+            app:layout_constraintEnd_toStartOf="@id/btnContacto"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <!-- Botón Contacto (solo ícono) -->
+        <ImageButton
+            android:id="@+id/btnContacto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_contacto"
+            android:contentDescription="Contacto"
+            app:layout_constraintEnd_toStartOf="@id/btnRegistro"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Botón Registro (solo ícono) alineado a la derecha -->
+        <ImageButton
+            android:id="@+id/btnRegistro"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_usuario"
+            android:contentDescription="Registro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
