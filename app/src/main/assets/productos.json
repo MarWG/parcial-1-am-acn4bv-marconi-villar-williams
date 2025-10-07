@@ -41,7 +41,7 @@
     "code": "154",
     "status": true,
     "category": "consoles",
-    "img": "../images/Consolas/Nintendo_Swicht.jpg"
+    "img": "../images/Consolas/nintendo_switch.jpg"
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "status": true,
     "platform": "Switch",
     "genre": "action",
-    "img": "../images/Nintendo/Bayonetta-3.jpg"
+    "img": "../images/Nintendo/Bayonetta_3.jpg"
   },
   {
     "id": 6,
@@ -100,13 +100,14 @@
   },
   {
     "id": 10,
-    "title": "The Legend of Zelda: Tears of the Kingdom",
-    "description": "Juego de Switch",
-    "price": 150000,
-    "code": "160",
+    "title": "Spider-Man 2",
+    "description": "Juego de PS5",
+    "price": 200000,
+    "code": "167",
     "status": true,
-    "platform": "Switch",
-    "genre": "adventure",
-    "img": "../images/Nintendo/Zelda_2.jpg"
+    "platform": "PS5",
+    "genre": "action",
+    "topSell": true,
+    "img": "../images/PS5/Spiderman_2.jpg"
   }
 ]
