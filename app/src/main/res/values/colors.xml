@@ -9,9 +9,13 @@
     <color name="blackdarkbutton">#424141</color>
     <color name="ButtonAccionAzul">#007BFF</color>
 
-    <!-- Colores para Iteem producto -->
+    <!-- Colores para Item producto -->
     <color name="colorFondoClaro">#E0F7FA</color>
     <color name="colorTextoPrincipal">#333333</color>
     <color name="colorTextoSecundario">#666666</color>
+
+    <!-- Colores para carrito -->
+    <color name="colorMarcaRojo">#F00707</color>
+    <color name="purple_500">#6200EE</color>
 
 </resources>

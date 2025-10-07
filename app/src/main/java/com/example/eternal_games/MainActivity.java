@@ -2,19 +2,21 @@ package com.example.eternal_games;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private RecyclerView recyclerProductos;
     private Button btnDemo;
+    private TextView badgeCantidad;
     private List<Producto> productos = new ArrayList<>();
     private ProductoAdapter adapter;
 
@@ -25,24 +27,35 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerProductos = findViewById(R.id.recyclerProductos);
         btnDemo = findViewById(R.id.btnDemo);
+        badgeCantidad = findViewById(R.id.badgeCantidad);
 
-        // Cargar los productos desde el repositorio y añadirlos a la lista 'productos'
+        // Cargar productos desde JSON
         productos.addAll(ProductoRepository.cargarProductos(this));
 
-        // Configuracion del RecyclerView
-        adapter = new ProductoAdapter(this, productos);
-        recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerProductos.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-        adapter = new ProductoAdapter(this, productos);
+        // Configurar RecyclerView con adapter que actualiza el badge
+        adapter = new ProductoAdapter(this, productos, badgeCantidad);
         recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerProductos.setAdapter(adapter);
 
+        // Botón para agregar productos demo
         btnDemo.setOnClickListener(v -> {
             productos.addAll(ProductoRepository.obtenerProductosDemo());
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Productos demo cargados.", Toast.LENGTH_SHORT).show();
         });
+
+        // Inicializar badge en 0 (oculto)
+        actualizarBadge(0);
+    }
+
+    public void actualizarBadge(int cantidad) {
+        if (badgeCantidad != null) {
+            if (cantidad > 0) {
+                badgeCantidad.setText(String.valueOf(cantidad));
+                badgeCantidad.setVisibility(TextView.VISIBLE);
+            } else {
+                badgeCantidad.setVisibility(TextView.GONE);
+            }
+        }
     }
 }
