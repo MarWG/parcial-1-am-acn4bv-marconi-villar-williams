@@ -26,12 +26,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerProductos = findViewById(R.id.recyclerProductos);
         btnDemo = findViewById(R.id.btnDemo);
 
+        // Cargar los productos desde el repositorio y añadirlos a la lista 'productos'
+        productos.addAll(ProductoRepository.cargarProductos(this));
+
+        // Configuracion del RecyclerView
+        adapter = new ProductoAdapter(this, productos);
+        recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerProductos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
         adapter = new ProductoAdapter(this, productos);
         recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerProductos.setAdapter(adapter);
 
         btnDemo.setOnClickListener(v -> {
-            productos.clear();
             productos.addAll(ProductoRepository.obtenerProductosDemo());
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Productos demo cargados.", Toast.LENGTH_SHORT).show();

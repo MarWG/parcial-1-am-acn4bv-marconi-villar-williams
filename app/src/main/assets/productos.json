@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Dead Space",
+    "description": "Juego de XBOX",
+    "price": 129000,
+    "code": "151",
+    "status": true,
+    "platform": "XBOX",
+    "topSell": true,
+    "genre": "action",
+    "img": "../images/XBOX/Dead_Space.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Elden Ring",
+    "description": "Juego de PS5",
+    "price": 500000,
+    "code": "152",
+    "status": true,
+    "platform": "PS5",
+    "topSell": true,
+    "genre": "action",
+    "img": "../images/PS5/Elden_Ring.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Xbox Series S",
+    "description": "Consola XBOX Series S",
+    "price": 1400000,
+    "code": "153",
+    "status": true,
+    "category": "consoles",
+    "img": "../images/Consolas/XBOX_S.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Nintendo Switch",
+    "description": "Consola Nintendo Switch",
+    "price": 450000,
+    "code": "154",
+    "status": true,
+    "category": "consoles",
+    "img": "../images/Consolas/Nintendo_Swicht.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Bayonetta 3",
+    "description": "Juego de Switch",
+    "price": 105000,
+    "code": "155",
+    "status": true,
+    "platform": "Switch",
+    "genre": "action",
+    "img": "../images/Nintendo/Bayonetta-3.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Fire Emblem",
+    "description": "Juego de Switch",
+    "price": 105000,
+    "code": "156",
+    "status": true,
+    "platform": "Switch",
+    "genre": "rpg",
+    "img": "../images/Nintendo/Fire_Emblem.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Mario Kart 8",
+    "description": "Juego de Switch",
+    "price": 95000,
+    "code": "157",
+    "status": true,
+    "platform": "Switch",
+    "genre": "racers",
+    "img": "../images/Nintendo/Mario_Kart_8.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Monster Hunter Rise",
+    "description": "Juego de Switch",
+    "price": 120000,
+    "code": "158",
+    "status": true,
+    "platform": "Switch",
+    "genre": "rpg",
+    "img": "../images/Nintendo/Monster_Hunter.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Super Mario 3D World",
+    "description": "Juego de Switch",
+    "price": 90000,
+    "code": "159",
+    "status": true,
+    "platform": "Switch",
+    "genre": "adventure",
+    "img": "../images/Nintendo/Super_Mario_3d.jpg"
+  },
+  {
+    "id": 10,
+    "title": "The Legend of Zelda: Tears of the Kingdom",
+    "description": "Juego de Switch",
+    "price": 150000,
+    "code": "160",
+    "status": true,
+    "platform": "Switch",
+    "genre": "adventure",
+    "img": "../images/Nintendo/Zelda_2.jpg"
+  }
+]
