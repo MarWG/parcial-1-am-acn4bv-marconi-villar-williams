@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Eternal_Games</string>
+    <!--Iteem producto-->
+    <string name="agregar_al_carrito">Agregar al Carrito</string>
 </resources>

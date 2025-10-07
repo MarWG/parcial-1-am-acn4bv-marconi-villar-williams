@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnDemo = findViewById(R.id.btnDemo);
 
         adapter = new ProductoAdapter(this, productos);
-        recyclerProductos.setLayoutManager(new LinearLayoutManager(this));
+        recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerProductos.setAdapter(adapter);
 
         btnDemo.setOnClickListener(v -> {

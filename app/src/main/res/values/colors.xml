@@ -8,4 +8,10 @@
     <!-- Colores para botoneso -->
     <color name="blackdarkbutton">#424141</color>
     <color name="ButtonAccionAzul">#007BFF</color>
+
+    <!-- Colores para Iteem producto -->
+    <color name="colorFondoClaro">#E0F7FA</color>
+    <color name="colorTextoPrincipal">#333333</color>
+    <color name="colorTextoSecundario">#666666</color>
+
 </resources>
