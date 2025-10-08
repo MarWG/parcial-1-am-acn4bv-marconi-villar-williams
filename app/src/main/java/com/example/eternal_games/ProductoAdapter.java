@@ -40,6 +40,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.titulo.setText(p.title);
         holder.descripcion.setText(p.description);
         holder.imagen.setImageResource(p.img); // Usamos imagen local
+        holder.txtPrecio.setText("Precio: $" + p.price);
 
         holder.btnAgregar.setOnClickListener(v -> {
             contador++;
@@ -59,7 +60,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     }
 
     public static class ProductoViewHolder extends RecyclerView.ViewHolder {
-        TextView titulo, descripcion;
+        TextView titulo, descripcion , txtPrecio;
         ImageView imagen;
         Button btnAgregar;
 
@@ -69,6 +70,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             descripcion = itemView.findViewById(R.id.txtDescripcion);
             imagen = itemView.findViewById(R.id.imgProducto);
             btnAgregar = itemView.findViewById(R.id.btnAgregar);
+            txtPrecio = itemView.findViewById(R.id.txtPrecio);
         }
     }
 }
