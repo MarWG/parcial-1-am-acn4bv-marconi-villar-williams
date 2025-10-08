@@ -1,5 +1,6 @@
 package com.example.eternal_games;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -8,6 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView badgeCantidad;
     private List<Producto> productos = new ArrayList<>();
     private ProductoAdapter adapter;
+    private FloatingActionButton fabCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerProductos = findViewById(R.id.recyclerProductos);
         btnDemo = findViewById(R.id.btnDemo);
         badgeCantidad = findViewById(R.id.badgeCantidad);
+        fabCarrito = findViewById(R.id.fabCarrito);
 
         // Cargar productos desde JSON
         productos.addAll(ProductoRepository.cargarProductos(this));
@@ -42,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
             productos.addAll(ProductoRepository.obtenerProductosDemo());
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Productos demo cargados.", Toast.LENGTH_SHORT).show();
+        });
+
+        // Botón fab de carrito que crea un intent para llevar a vista de carrito
+        fabCarrito.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CarritoActivity.class);
+            startActivity(intent);
         });
 
         // Inicializar badge en 0 (oculto)
