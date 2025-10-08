@@ -20,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerProductos;
     private Button btnDemo;
     private TextView badgeCantidad;
-    private List<Producto> productos = new ArrayList<>();
-    private ProductoAdapter adapter;
     private FloatingActionButton fabCarrito;
+
+    private List<Producto> productos = new ArrayList<>();
+    private List<CarritoItem> carrito = new ArrayList<>();
+    private ProductoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         badgeCantidad = findViewById(R.id.badgeCantidad);
         fabCarrito = findViewById(R.id.fabCarrito);
 
-        // Cargar productos desde JSON
+        // Cargar productos desde el repositorio
         productos.addAll(ProductoRepository.cargarProductos(this));
 
-        // Configurar RecyclerView con adapter que actualiza el badge
-        adapter = new ProductoAdapter(this, productos, badgeCantidad);
+        // Configurar RecyclerView con adapter que actualiza el badge y el carrito
+        adapter = new ProductoAdapter(this, productos, badgeCantidad, carrito);
         recyclerProductos.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerProductos.setAdapter(adapter);
 
@@ -49,9 +51,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Productos demo cargados.", Toast.LENGTH_SHORT).show();
         });
 
-        // Botón fab de carrito que crea un intent para llevar a vista de carrito
+        // Botón flotante para abrir el carrito
         fabCarrito.setOnClickListener(v -> {
+            if (carrito.isEmpty()) {
+                Toast.makeText(this, "El carrito está vacío.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("carrito", new ArrayList<>(carrito)); // Serializable
             startActivity(intent);
         });
 

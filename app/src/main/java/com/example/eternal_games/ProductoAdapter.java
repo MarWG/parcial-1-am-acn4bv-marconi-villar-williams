@@ -19,12 +19,13 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     private Context context;
     private List<Producto> productos;
     private TextView badgeCantidad;
-    private int contador = 0; // contador simulado de productos agregados
+    private List<CarritoItem> carrito;
 
-    public ProductoAdapter(Context context, List<Producto> productos, TextView badgeCantidad) {
+    public ProductoAdapter(Context context, List<Producto> productos, TextView badgeCantidad, List<CarritoItem> carrito) {
         this.context = context;
         this.productos = productos;
         this.badgeCantidad = badgeCantidad;
+        this.carrito = carrito;
     }
 
     @NonNull
@@ -39,14 +40,28 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         Producto p = productos.get(position);
         holder.titulo.setText(p.title);
         holder.descripcion.setText(p.description);
-        holder.imagen.setImageResource(p.img); // Usamos imagen local
-        holder.txtPrecio.setText("Precio: $" + p.price);
+        holder.imagen.setImageResource(p.img);
+        holder.txtPrecio.setText("Precio:" + p.price);
 
         holder.btnAgregar.setOnClickListener(v -> {
-            contador++;
+            boolean yaExiste = false;
+            for (CarritoItem item : carrito) {
+                if (item.producto.id == p.id) {
+                    item.cantidad++;
+                    yaExiste = true;
+                    break;
+                }
+            }
+            if (!yaExiste) {
+                carrito.add(new CarritoItem(p, 1));
+            }
 
             if (badgeCantidad != null) {
-                badgeCantidad.setText(String.valueOf(contador));
+                int totalUnidades = 0;
+                for (CarritoItem item : carrito) {
+                    totalUnidades += item.cantidad;
+                }
+                badgeCantidad.setText(String.valueOf(totalUnidades));
                 badgeCantidad.setVisibility(View.VISIBLE);
             }
 
@@ -60,7 +75,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     }
 
     public static class ProductoViewHolder extends RecyclerView.ViewHolder {
-        TextView titulo, descripcion , txtPrecio;
+        TextView titulo, descripcion, txtPrecio;
         ImageView imagen;
         Button btnAgregar;
 
@@ -69,8 +84,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             titulo = itemView.findViewById(R.id.txtTitulo);
             descripcion = itemView.findViewById(R.id.txtDescripcion);
             imagen = itemView.findViewById(R.id.imgProducto);
-            btnAgregar = itemView.findViewById(R.id.btnAgregar);
             txtPrecio = itemView.findViewById(R.id.txtPrecio);
+            btnAgregar = itemView.findViewById(R.id.btnAgregar);
         }
     }
 }
